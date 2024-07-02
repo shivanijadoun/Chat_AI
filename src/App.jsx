@@ -14,7 +14,7 @@ function App() {
     setAnswer("Loading your answer... \n It might take upto 10 seconds");
     try {
       const response = await axios({
-        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${
+        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${
           import.meta.env.VITE_API_GENERATIVE_LANGUAGE_CLIENT
         }`,
         method: "post",
@@ -53,15 +53,15 @@ function App() {
       ></textarea>
       <button
         type="submit"
-        className={`bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600 transition-all duration-300 ${
-          generatingAnswer ? 'opacity-50 cursor-not-allowed' : ''
+        className={`bg-blue-500 overflow-hidden text-white p-3 rounded-md hover:bg-blue-600 transition-all duration-300 ${
+          generatingAnswer ? 'opacity-50 cursor-not-allowed  overflow-hidden' : ''
         }`}
         disabled={generatingAnswer}
       >
         Generate answer
       </button>
     </form>
-    <div className="w-full md:w-2/3 lg:w-1/2 xl:w-1/3 text-center rounded-lg bg-white my-4 shadow-lg transition-all duration-500 transform hover:scale-105">
+    <div className=" overflow-scroll w-full md:w-2/3 lg:w-1/2 xl:w-1/3 text-center rounded-lg bg-white my-4 shadow-lg transition-all duration-500 transform hover:scale-105">
       <ReactMarkdown className="p-4">{answer}</ReactMarkdown>
     </div>
   </div>
